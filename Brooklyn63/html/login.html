@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML 5, CSS 3, jQuery Log-in & Registration</title>
+<link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css\Inter.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#loginLink").click(function( event ){
+           event.preventDefault();
+           $(".overlay").fadeToggle("fast");
+     });
+
+    $(".overlayLink").click(function(event){
+        event.preventDefault();
+        var action = $(this).attr('data-action');
+
+        $("#loginTarget").load("ajax/" + action);
+
+        $(".overlay").fadeToggle("fast");
+    });
+
+    $(".close").click(function(){
+        $(".overlay").fadeToggle("fast");
+    });
+
+    $(document).keyup(function(e) {
+        if(e.keyCode == 27 && $(".overlay").css("display") != "none" ) { 
+            event.preventDefault();
+            $(".overlay").fadeToggle("fast");
+        }
+    });
+});
+</script>
+<style>
+/*
+*    RESET
+*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 0;
+}
+
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+/*
+*    Общие стили
+*/
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    background-color: #f3f3f3;
+    color: rgb(165,165,165);
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
+
+a.close {
+    color: #000000;
+    display: block;
+    padding: .2em .5em;
+    position: absolute;
+    top: 30px;
+    right: 1.25rem;
+    font-size: 20px;
+}
+
+    a.close:hover {
+        background-color: #1bc5b3;
+        cursor: pointer;
+    }
+
+/*
+*    Панель входа
+*/
+div.overlay {
+    background-color: rgba(0,0,0,.25);
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+    div.overlay > div.login-wrapper {
+        align-self: center;
+        width: 360px;
+        height: 415px;
+        left: 620px;
+        top: calc(50% - 415px/2 - 0.5px);
+
+        background: #FFFFFF;
+        border-radius: 20px;
+    }
+
+        div.overlay > div.login-wrapper > div.login-content {
+            background-color: rgb(255,255,255);
+            border-radius: 20px;
+            padding: 24px;    
+            position: relative;
+        }
+
+            div.overlay > div.login-wrapper > div.login-content > h3 {
+                color: rgb(0,0,0);
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 40px;
+                line-height: 110%;
+                color: #282828;
+                margin-bottom: 61px;
+            }
+/*
+*    Форма
+*/
+form label {
+    color: rgb(0,0,0);
+    display: block;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.25em;
+    margin: 40px 0;    
+}
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="number"],
+    form input[type="search"],
+    form input[type="password"],
+    form textarea {
+        width: 320px;
+        height: 23px;
+        transition: all 400ms ease;
+        width: 90%;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 11px;
+        line-height: 13px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        /* Черный */
+        color: #282828;
+        border: none;
+        border-bottom: 1px solid #282828;
+    }
+
+    form input[type="text"]:focus,
+    form input[type="email"]:focus,
+    form input[type="number"]:focus,
+    form input[type="search"]:focus,
+    form input[type="password"]:focus,
+    form textarea:focus,
+    form select:focus { 
+        border-color: #4195fc;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px #4195fc;
+    }
+
+        form input[type="text"]:invalid:focus,
+        form input[type="email"]:invalid:focus,
+        form input[type="number"]:invalid:focus,
+        form input[type="search"]:invalid:focus,
+        form input[type="password"]:invalid:focus,
+        form textarea:invalid:focus,
+        form select:invalid:focus { 
+            border-color: rgb(248,66,66);
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px rgb(248,66,66);
+        }
+
+div.checklabel {
+    margin-top: 60px;
+    margin-bottom: 20px;
+
+}
+
+    div.checklabel > input:hover {
+        background-color: #1bc5b3;
+        cursor: pointer;
+    }
+
+    div.checklabel > div.checktext {
+        display: inline;
+        text-align: center;
+        margin-left: 8px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        color: #282828;
+    }
+
+    div.checklabel > a {
+        margin-left: 25px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        color: #282828;
+        text-decoration: none;
+        display: inline-block;
+        border-bottom: 1px solid black;
+        padding-bottom: 5px;
+        cursor: pointer;
+    }
+
+form button {
+/* Buttons */
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 19px 62px;
+gap: 10px;
+width: 312px;
+height: 62px;
+/* Черный */
+background: #282828;
+border-radius: 20px;
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 17px;
+line-height: 140%;
+/* identical to box height, or 24px */
+align-items: center;
+text-align: center;
+/* Белый */
+color: #FFFFFF;
+}
+
+    form button:hover {
+        background-color: #1bc5b3;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+<div class="test"></div>
+<p>Here's some content.</p>
+<a href="login.php" id="loginLink">Login</a>
+<ul>
+    <li><a href="login.php" class="overlayLink" data-action="login-form.html">Log-in</a></li>
+    <li><a href="register.php" class="overlayLink" data-action="registration-form.html">Register</a></li>
+</ul>
+<div class="overlay" style="display: none;">
+    <div class="login-wrapper">
+        <div class="login-content" id="loginTarget">
+            <a class="close">&#10006
+            </a>
+            <h3>Вход на сайт</h3>
+            <form method="post" action="login.php">
+                <label for="username">
+                    <input type="text" name="username" id="username" placeholder="E-mail" pattern="^[a-zA-Z][a-zA-Z0-9-_.]{8,20}$" required />
+                </label>
+                <label for="password">
+                    <input type="password" name="password" id="password" placeholder="пароль" pattern="(?=^.{8,}$)((?=.*d)|(?=.*W+))(?![.n])(?=.*[A-Z])(?=.*[a-z]).*$" required />
+                </label>
+                <div class="checklabel">
+                    <input type="checkbox" id="politics" onclick="check();" value="" autocomplete="off"/>
+                    <div class="checktext">Даю согласие на обработку</div> 
+                    <a href="ссылка на страницу согласия">
+                    Персональных данных</a>
+                </div>
+                <button type="submit">Войти</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Brooklyn 63</title>
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\Inter.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#loginLink").click(function( event ){
+                event.preventDefault();
+                $(".overlay").fadeToggle("fast");
+            });
+    
+        $(".overlayLink").click(function(event){
+            event.preventDefault();
+            var action = $(this).attr('data-action');
+    
+            $("#loginTarget").load("ajax/" + action);
+    
+            $(".overlay").fadeToggle("fast");
+        });
+    
+        $(".close").click(function(){
+            $(".overlay").fadeToggle("fast");
+        });
+    
+        $(document).keyup(function(e) {
+            if(e.keyCode == 27 && $(".overlay").css("display") != "none" ) { 
+                event.preventDefault();
+                $(".overlay").fadeToggle("fast");
+            }
+        });
+    });
+</script>
+</head>
+    <div class="container">
+        <section class="promo">
+                <div class="brooklyn63">Бруклин 63</div>
+                <a href="login.php" id="loginLink" class="personal" >Личный кабинет</a>
+        </section>
+        <section class="bar">
+                <a class="bar_btn" href="#coffee">Кофе</a>
+                <a class="bar_btn" href="#snacks">Закуски</a>
+                <a class="bar_btn" href="#dessert">Десерты</a>
+                <a class="bar_btn">Корзина</a>
+        </section>
+        <section class="first">
+            <article class="col first_title">
+                Кофе от 99 рублей
+                <div class="col first_2">
+                    <div class="col first_offer">Вы получаете, горячий свеже <br /> сваренный кофе.</div>
+                    <div class="col first_offer"></div>
+                    <div class="col first_offer first_offer_btn">
+                        <button type="button" class="first_btn" style="padding-bottom: 15px">
+                            <div class="first_btn_txt">Заказать</div>
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <aside class = "col first_aside">
+                <img src ="img/first_screen_img.png"></img>
+            </aside>
+        </section>
+        <div class="menu_txt" id="coffee">Кофе</div>
+        <section class="menu">
+            <div class="cell">
+                <img src="img/coc_latte.png" class="cell_img">
+                <div class="cell_txt">Кокосовый латте</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/Americano.png" class="cell_img">
+                <div class="cell_txt">Американо</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/car_cap.png" class="cell_img">
+                <div class="cell_txt">Карамельный капучино</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/Cap.png" class="cell_img">
+                <div class="cell_txt">Капучино</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/nut_cap.png" class="cell_img">
+                <div class="cell_txt">Ореховый латте</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/latte.png" class="cell_img">
+                <div class="cell_txt">Латте</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+        </section>
+        <div class="menu_txt" id ="snacks">Закуски</div>
+        <section class="menu">
+            <div class="cell">
+                <img src="img/dan_cheese.png" class="cell_img">
+                <div class="cell_txt">Дэнвич ветчина и сыр</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/dan_chor.png" class="cell_img">
+                <div class="cell_txt">Дэнвич чоризо барбекю</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/paste_kar.png" class="cell_img">
+                <div class="cell_txt">Паста Карбонара</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/paste_meat.png" class="cell_img">
+                <div class="cell_txt">Паста Мясная</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/paste_Pesso.png" class="cell_img">
+                <div class="cell_txt">Паста Песто</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/potatoes.png" class="cell_img">
+                <div class="cell_txt">Картофель</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+        </section>
+        <div class="menu_txt" id="dessert">Десерты</div>
+        <section class="menu">
+            <div class="cell">
+                <img src="img/pineapple.png" class="cell_img">
+                <div class="cell_txt">Слоеные палочки с ананасами</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/chocolate.png" class="cell_img">
+                <div class="cell_txt">Слоеные палочки с шоколадом</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/cookie.png" class="cell_img">
+                <div class="cell_txt">Шоколадный кукис</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/New_York.png" class="cell_img">
+                <div class="cell_txt">Чизкейк Нью-Йорк</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/Banana.png" class="cell_img">
+                <div class="cell_txt">Чизкейк Банановый</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+            <div class="cell">
+                <img src="img/Tart.png" class="cell_img">
+                <div class="cell_txt">Тарт</div>
+                <button type="button" class="cell_btn">
+                    <div class="cell_btn_txt">Заказать</div>
+                </button>
+            </div>
+        </section>
+        <div class="booking_h2">Бронь столика</div>
+        <section class="booking">
+            <input class="booking_cell" placeholder="имя"></input>
+            <input class="booking_cell" placeholder="телефон"></input>
+            <input class="booking_cell" placeholder="e-mail"></input>
+            <input class="booking_cell" placeholder="дата"></input>
+            <input class="booking_cell" placeholder="время"></input>
+            <input class="booking_cell" placeholder="номер стола"></input>
+        </section>
+        <div class="check">
+            <input type="checkbox" class="chbox">
+            <div class="check_txt" >Даю согласие на обработку <a name ="link" href="">Персональных данных</a></div>
+        </div>
+        <button class="booking_btn">
+            <div class="booking_btn_txt">Оставить заявку</div>
+        </button>
+    </div>
+    <div class="container2">
+        <div class="container">
+            <section class="foot">
+                <article class="col contacts">
+                    <div class="foot_2">
+                        <div class="col con_add1">Контакты</div>
+                        <div class="col con_add"></div>
+                        <div class="col con_add" style="padding-bottom: 15px;">
+                            <h2>Сотрудничество</h2>
+                            <div class="con_txt">ул. Знаменка, 11, Москва <br /> + 7 922 555 1234 </div>
+                        </div>
+                        <div class="col con_add" style="padding-bottom: 15px;">
+                            <h2>Карьера</h2>
+                            <div class="con_txt">ул. Воздвиженка, 6, Москва<br />+ 7 922 577 1344</div>
+                        </div>
+                    </div>
+                </article>
+                <aside class="map"><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A62002676c2733f3c42d7a74f74302d6a02974b00e5469c54981ed7608338ca15&amp;width=100%&amp;height=100%&amp;lang=ru_RU&amp;scroll=true"></script></aside>
+            </section>
+            <section class = "private-user-page-footer">
+                <article class = "col left-private-user-page-footer">
+                    <div class="private-user-page-footer_2">
+                        <div class = "col logo-footer-container">
+                            <!-- <span class = "logo-footer-text">БРУКЛИН 63</span> -->
+                            Бруклин 63
+                        </div>
+                        <div class="col con_add"></div>
+                        <div class = "col left_private_user_page_footer-text">
+                            <!-- <h4 class = "left-footer-header-text">Адрес</h4>
+                            <span class = "cafe-address">ул. Знаменка, 11, Москва</span>
+                            <span class = "cafe-address">hello@uprock.pro</span>
+                            <span class = "cafe-address">+ 7 922 555 1234</span> -->
+                            <h2>Карьера</h2>
+                            <div class="con_txt">ул. Знаменка, 11, Москва<br />hello@uprock.pro <br /> + 7 922 555 1234 </div>
+                        </div>
+                        <div class = "col left_private_user_page_footer-social-networks">
+                            <!-- <h4 class = "left-footer-header-text">Соцсети</h4>
+                            <a class = "telegram-link" href=""> Telegram</a> -->
+                            <h2>Соцсети</h2>
+                            <a class="con_txt_tg" href="">Telegram</a>
+                        </div>
+                    </div>
+                </article>
+                <aside class = "right-private-user-page-footer">
+                        <a class = "navigation-footer-links" href="">Меню</a>
+                        <a class = "navigation-footer-links" href="#coffee">Кофе</a>
+                        <a class = "navigation-footer-links" href="#snacks">Закуски</a>
+                        <a class = "navigation-footer-links" href="#dessert">Десерты</a>
+                        <a class = "navigation-footer-links" href="">Корзина</a>
+                </aside>
+            </section>
+        </div>
+    </div>
+    <div class="overlay" style="display: none;">
+        <div class="login-wrapper">
+            <div class="login-content" id="loginTarget">
+                <a class="close">&#10006
+                </a>
+                <h3>Вход на сайт</h3>
+                <form method="post" action="html/lk.html">
+                    <label for="username">
+                        <input type="text" name="username" id="username" placeholder="E-mail" pattern="^[a-zA-Z][a-zA-Z0-9-_.]{8,20}$" required />
+                    </label>
+                    <label for="password">
+                        <input type="password" name="password" id="password" placeholder="пароль" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required />
+                    </label>
+                    <div class="checklabel">
+                        <input type="checkbox" id="politics" onclick="check();" value="" autocomplete="off"/>
+                        <div class="checktext">Даю согласие на обработку</div> 
+                        <a href="ссылка на страницу согласия">
+                        Персональных данных</a>
+                    </div>
+                    <button type="submit">Войти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
